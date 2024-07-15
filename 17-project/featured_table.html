@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editable Add and Remove table</title>
+  <style>
+    .conatiner{
+      overflow: hidden;
+    }
+    .tab_1 table th{
+      border: 1px solid black;
+    }
+    .tab_2{
+      float:left;
+      margin-left: 350px;
+    }
+    .tab_2 input{
+      display: block;
+      margin-bottom: 10px;
+    }
+    tr{
+      transition: all .25s ease-in-out;
+    }
+    tr:hover{
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tab tab_1">
+      <table id="table">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+        </tr>
+        <tr>
+          <td>A1</td>
+          <td>B1</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>A2</td>
+          <td>B2</td>
+          <td>13</td>
+        </tr>
+      </table>
+    </div>
+    <div class="tab tab_2">
+      First Name: <input type="text" name="fname" id="fname">
+      Last Name: <input type="text" name="lname" id="lname">
+      Age: <input type="number" name="age" id="age">
+
+      <button onclick="addHtmlTableRow()">Add</button>
+      <button onclick="editHtmlTbleSelectedRow()">Edit</button>
+      <button onclick="removeSelectedRow()">Delete</button>
+    </div>
+  </div>
+
+  <script>
+
+var rowIndex,table = document.getElementById("table")
+
+//check if input is empty
+    function checkEmptyInput() {
+      var isEmpty = false;
+      var fname = document.getElementById("fname").value
+      var lname = document.getElementById("lname").value
+      var age = document.getElementById("age").value;
+
+      if(fname === ""){
+        alert("first Name cannot be empty");
+        isEmpty = true;
+      }
+      else if(lname === ""){
+        alert("Last Name cannot be empty");
+        isEmpty = true;
+      }
+      else if(age === ""){
+        alert("age cannot be empty");
+        isEmpty = true;
+      }
+      return isEmpty;
+    }
+
+
+    //add rows
+    function addHtmlTableRow() {
+      //get table by ID
+      //create a new row with cells
+      //get value from input text
+      //set value into the created cell
+      //var table = document.getElementById("table")
+
+      if(!checkEmptyInput()){
+      var newRow = table.insertRow(table.length)
+      var cell1 = newRow.insertCell(0)
+      var cell2 = newRow.insertCell(1)
+      var cell3 = newRow.insertCell(2)
+      var fname = document.getElementById("fname").value
+      var lname = document.getElementById("lname").value
+      var age = document.getElementById("age").value
+
+      cell1.innerHTML = fname;
+      cell2.innerHTML = lname;
+      cell3.innerHTML = age;
+      
+      // call the function to add even listener to the new created row
+      selectedRowIntoInput ();
+    }}
+
+    //Display selected raw into the input tab
+    function selectedRowIntoInput () {
+      //var rowIndex,table = document.getElementById("table")
+      for( var i = 1; i<table.rows.length; i++){
+        table.rows[i].onclick = function() {
+          //get the row index
+          rIndex = this.rowIndex;
+          document.getElementById("fname").value = this.cells[0].innerHTML; 
+          document.getElementById("lname").value = this.cells[1].innerHTML; 
+          document.getElementById("age").value = this.cells[2].innerHTML; 
+        }
+      }
+    }
+    selectedRowIntoInput ();
+
+    function editHtmlTbleSelectedRow() {
+      var fname = document.getElementById("fname").value
+      var lname = document.getElementById("lname").value
+      var age = document.getElementById("age").value
+
+      if(!checkEmptyInput()){
+      table.rows[rIndex].cells[0].innerHTML = fname;
+      table.rows[rIndex].cells[1].innerHTML = lname;
+      table.rows[rIndex].cells[2].innerHTML = age;
+    }}
+
+    function removeSelectedRow() {
+      table.deleteRow(rIndex);
+      // Empty the input text
+      document.getElementById("fname").value=""
+      document.getElementById("lname").value = ""
+      document.getElementById("age").value = ""
+ 
+    }
+    
+  </script>
+
+</body>
+</html>

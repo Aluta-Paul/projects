@@ -1,0 +1,225 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+}
+.container{
+  height: 580px;
+  width: 430px;
+  position: relative;
+  box-shadow: 0 0 8px rgba(36, 31, 31, 0.3);
+  overflow: hidden;/*prevents things from spilling outside the container*/
+}
+.container h1{
+  position: absolute;
+  text-align: center;
+  top: 40px;
+  width: 100%;
+  font-size: 40px;
+  
+}
+.indicator{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  top: 160px;
+}
+.step{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 5px;
+}
+.step div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 34px;
+  height: 34px;
+  border: 1px solid black;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.step1 div{
+  border-color: white;
+  background-color: rgb(68, 7, 32);
+  color: white;
+  transition: all 0.3s ease;
+}
+.step span{
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.step1 span{
+  color: brown;
+}
+.indicator .line{
+  width: 30px;
+  height: 30px;
+  border-top:4px solid black;
+  transition: all 0.3s ease;
+}
+
+.container .panel{
+  position: relative;
+  height: 100%;
+  width: 1720px;/*this is the trick that ensure we can make pages move. with OVERLAPPING HIDDEN then we fit everything in a big box*/
+  top: 90px;
+  left: 0;
+  transition: all 0.45s ease;
+  
+}
+.page-4,.page-3,.page-2,.page-1{
+  height: 100%;
+  width: 430px;
+  position: absolute;
+  
+}/* here remember that panel is bigger than container so it is 25% of the panel etc*/
+.page-1{
+  left: 0;
+}
+.page-2{
+  left: 25%;
+}
+.page-3{
+  left: 50%;
+}
+.page-4{
+  left: 75%;
+}
+.form{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 20px;
+}
+.form .form-group{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 50px;
+  margin: 24px 0;
+}
+.form-group input{
+  height: 100%;
+  width: 100%;
+  position: absolute;border-radius: 5px;
+  padding: 0 20px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  border: 1px solid black;
+}
+.form-group label{
+  position: absolute;
+  pointer-events: none;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%);/*used to make the text stay in the middle of the div and not at the bottom*/
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  transition: all 0.3s ease;
+  color: grey;
+}
+.form-group input:focus~label,
+.form-group input:valid~label{
+  /*only when we have the valid psudo element that we get the animation*/
+  color: black;
+  top: 0;
+  transform: translateY(-50%) scale(0.85);/*allows that the text shrinks*/
+}
+form .btn-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 50px;
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: brown;
+  color: white;
+  width: 48%;
+  height: 100%;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-f{
+  width: 100%;
+}
+.btn:active{
+  transform: scale(0.85);
+}
+.btn:hover{
+  opacity: 0.8;
+}
+#one:checked ~ .container .panel{
+  left: -430px;
+}
+#two:checked ~ .container .panel{
+  left: -860px;
+}
+#three:checked ~ .container .panel{
+  left: -1290px;
+}
+button{
+  background-color: rgb(68, 7, 32);
+  color: white;
+  height: 100%;
+  width: 48%;
+  border-radius: 5px;
+  border-style: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+button:active{
+  transform: scale(0.85);
+}
+#one:checked ~ .container .indicator .line1,
+#two:checked ~ .container .indicator .line2,
+#three:checked ~ .container .indicator .line3{
+  border-color: rgb(129, 7, 58);
+}
+#one:checked ~ .container .indicator .step2 div,
+#two:checked ~ .container .indicator .step3 div,
+#three:checked ~ .container .indicator .step4 div{
+  background-color: rgb(68, 7, 32);
+  color: white;
+}
+#one:checked ~ .container .indicator .step2 span,
+#two:checked ~ .container .indicator .step3 span,
+#three:checked ~ .container .indicator .step4 span{
+  color: brown;
+}
+#one,#two,#three{
+  display: none;
+}

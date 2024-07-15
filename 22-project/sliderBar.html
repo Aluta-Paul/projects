@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expandable slider</title>
+  <link rel="stylesheet" href="styles.css">
+  <!--CDN For "boxIcons"-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body class="sb-expanded">
+  <aside>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">
+            <i class="bx b0x-home-circle"></i> <!--Using open sourced "boxIcons" -->
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <i class='bx bx-home-circle'></i>
+            <span>Explore</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-category'></i> 
+            <span>Slideshow</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-collection'></i> 
+            <span>Collection</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cloud-download'></i>
+            <span>Downloads</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-message-rounded-dots'></i> 
+            <span>Message</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-cog' ></i> 
+            <span>Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" data-resize-btn="">
+            <i class='bx bx-chevron-right' ></i>
+            <span>Collapse</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <h1>Expandable slider</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla voluptas quaerat qui fuga delectus similique odio, aut animi impedit quasi ab, voluptate ea nemo unde laborum! Nesciunt ipsa blanditiis nemo.</p>
+    <p><br><h2>instructions</h2><br>add active class to selected list <br>add sb-expanded class to body tag to transform the side bar into interactive user experience<br> add a css variable to set initial width of sidebar to 5rem <br>whenever the sb-expanded is apk we change the width of the css to 12.5rem <br>Then we give the aside the width set by --sb-width css variable <br>more decorations <br> Make it interactive using JS</p>
+  </main>
+
+  <script>
+    const resizeBtn = document.querySelector('[data-resize-btn]');//using data atribute
+
+    resizeBtn.addEventListener('click',function(e){
+      e.preventDefault();
+      document.body.classList.toggle('sb-expanded')
+    });
+  </script>
+</body>
+</html>

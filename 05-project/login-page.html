@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sliding login page</title>
+  <link rel="stylesheet" href="login-styles.css">
+</head>
+<body>
+ 
+
+  <input type="checkbox" id="one">
+  <input type="checkbox" id="two">
+  <input type="checkbox" id="three">
+
+
+<div class="container">
+  <h1>Create account</h1>
+
+  <div class="indicator">
+
+    <div class="step step1">
+      <div>1</div>
+      <span>Basic</span>
+    </div>
+
+    <div class="line line1"></div>
+
+    <div class="step step2">
+      <div>2</div>
+      <span>Contact</span>
+    </div>
+
+    <div class="line line2"></div>
+
+    <div class="step step3">
+      <div>3</div>
+      <span>Personal</span>
+    </div>
+
+    <div class="line line3"></div>
+
+    <div class="step step4">
+      <div>4</div>
+      <span>Login</span>
+    </div>
+
+  </div>
+
+  <div class="panel">
+      <div class="page-1">
+        <form action="#" class="form">
+          <h2>Name Information</h2>
+          <div class="form-group">
+            <input type="text" id="input1" required>
+            <label for="input1">First Name</label>
+          </div>
+          <div class="form-group">
+            <input type="text" id="input2" required>
+            <label for="input2">Last Name</label>
+          </div>
+          <div class="btn-group">
+            <label for="one" class="btn btn-f">Next</label>
+          </div>
+        </form>
+       
+      </div>
+    <div class="page-2">
+      <form action="#" class="form">
+        <h2>Contact Information</h2>
+        <div class="form-group">
+          <input type="email" id="input3" required>
+          <label for="input3">Email</label>
+        </div>
+        <div class="form-group">
+          <input type="number" id="input4" required>
+          <label for="input4">Phone Number</label>
+        </div>
+        <div class="btn-group">
+          <label for="one" class="btn">Prev</label><!--this will lead this to go and uncheck the bix "one" which was checked by Next-->
+          <label for="two" class="btn">Next</label>
+        </div>
+      </form>
+     
+    </div>
+    <div class="page-3">
+      <form action="#" class="form">
+        <h2>Birth Information</h2>
+        <div class="form-group">
+          <input type="date" id="input5" required>
+          <label for="input5">Date of Birth</label>
+        </div>
+        <div class="form-group">
+          <input type="text" id="input6" required>
+          <label for="input6">Gender</label>  
+        </div>
+        <div class="btn-group">
+          <label for="two" class="btn">Prev</label>
+          <label for="three" class="btn">Next</label>
+        </div>
+      </form>
+     
+    </div>
+    <div class="page-4">
+      <form action="#" class="form">
+        <h2>Login Details</h2>
+        <div class="form-group">
+          <input type="text" id="input7">
+          <label for="input7">Username</label>
+        </div>
+        <div class="form-group">
+          <input type="password" id="input8">
+          <label for="input8">Password</label>
+        </div>
+        <div class="btn-group">
+          <label for="three" class="btn">Prev</label>
+          <button>Sign up</button>
+        </div>
+      </form>
+     
+    </div>
+    
+  </div>
+</div>
+
+</body>
+</html>

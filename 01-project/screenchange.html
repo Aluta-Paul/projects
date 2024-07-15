@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width= device-width, initial-scale= 1.0">
+  <title>Randomn Screen Color</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="box">
+    <div class="circle"></div>
+  </div>
+
+  <!--function to be responsible for the color change-->
+  <script>
+
+    function screencolor(){
+      let r = Math.floor(Math.random()*255);
+      let g = Math.floor(Math.random()*255);
+      let b = Math.floor(Math.random()*255);
+   //think! this variables are in a SCOPE  so only availabale here hence we use this FX to also get the body
+      document.body.style.backgroundColor = "rgba("+ r +","+ g +","+ b +")";
+  
+    }
+    setInterval(screencolor,1000);// if we call the function inside setinterval then the color only changes once
+  
+  </script>
+</body>
+</html>

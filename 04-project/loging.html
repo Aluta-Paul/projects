@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Login Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="box">
+      <span class="borderline"></span><!--this is just to create an empty div that will make the red animation-->
+
+
+    <form>
+      <h2>Sign in</h2><!--no need for a div cause its the only WORD ELEMENT-->
+
+      <!--container for the inputs-->
+      <div class="input-box">
+        <input type="text" required="required">
+        <span>Username</span>
+        <i></i>
+      </div>
+      <div class="input-box">
+        <input type="password" required="required">
+        <span>Password</span>
+        <i></i> <!--we use it to draw line below-->
+      </div>
+
+      <!--links for the page-->
+      <div class="links">
+        <a href="#">forgot password</a>
+        <a href="#">Sign up</a>
+      </div>
+
+      <!--login button-->
+      <input type="submit" value="login">
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APP UI LOGIN FORM NEUMORPHISM EFFECT</title>
+
+  <link rel="stylesheet" href="CSS.css">
+</head>
+<body>
+  <section class="sign-in">
+    <div class="main_page">
+      <div class="name">
+        <h1>APP UI</h1>
+        Neumorphism Effect App UI Login form
+      </div>
+      <div class="form_btns">
+        <button class="s_btn">Sign In</button>
+        <button class="f_btn">Sign In with Facebook</button>
+        <a href="#" class="new_btn">New Account ? </a>
+      </div>
+      <div class="cancel">
+        <a href="#"><ion-icon name="caret-down"></ion-icon></ion-icon></a>
+      </div>
+    </div>
+
+    <div class="sign-in-page">
+      <form action="">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button>Sign In</button>
+      </form>
+    </div>
+
+    <div class="sign-up-page">
+      <form action="">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <input type="password" placeholder="Repeat Password">
+        <button>Sign Up</button>
+      </form>
+    </div>
+
+  </section>
+
+    <!--ion icons 7.1.0-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.s_btn').addEventListener('click', function() {
+          document.querySelector('.sign-in').classList.add('active_sign_in');
+          document.querySelector('.sign-in').classList.remove('active_sign_up');
+        });
+  
+        document.querySelector('.new_btn').addEventListener('click', function() {
+          document.querySelector('.sign-in').classList.add('active_sign_up');
+          document.querySelector('.sign-in').classList.remove('active_sign_in');
+        });
+  
+        document.querySelector('.cancel a').addEventListener('click', function() {
+          document.querySelector('.sign-in').classList.remove('active_sign_in');
+          document.querySelector('.sign-in').classList.remove('active_sign_up');
+        });
+      }); 
+    </script>ss
+  
+  <!--JavaScript
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).on('click','.s_btn',function() {
+      $('.sign-in').addClass('active_sign_in')
+      .siblings('.sign-in').removeClass('active_sign_up')
+
+    });
+
+    $(document).on('click','.new_btn',function() {
+
+      $('.sign-in').addClass('active_sign_up')
+      .siblings('.sign-in').removeClass('active_sign_in')
+
+    });
+
+    $(document).ready(function(){
+      $('.cancel a').click(function(){
+        $('.sign-in').removeClass("active_sign_in, active_sign_up")
+      })
+    });
+
+  </script> -->
+
+
+
+</body>
+</html>

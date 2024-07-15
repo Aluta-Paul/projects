@@ -1,0 +1,238 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  min-height: 100vh;
+  background: url(images/background_image_html.jpeg) center /cover;/*shorthand property of BG*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main.table{
+  width: 82vw;
+  height: 90vh;
+  background-color: #fff5;
+
+  /*inorder to get the background blur*/
+  backdrop-filter: blur(7px);
+
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: .8rem;
+
+  overflow: auto;
+  overflow: overlay;
+}
+
+.table_header {
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  padding: .8rem 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input_group{
+  background-color: #fff5;
+  padding: 12px;
+  height: 100%;
+  width: 35%;
+  border-radius: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition:  0.2s;
+}
+.table_header .input_group img{
+  width: 2.8rem;
+  height: 2.8rem;
+}
+.table_header .input_group input{
+  width: 100%;
+  padding: 0 0.8rem 0 0.3rem;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.table_header .input_group:hover{
+  width: 45%;
+  background-color: #fff8;
+  box-shadow: 0 0.1rem 0.4rem #0002;
+}
+
+.table_body{
+  width: 95%;
+  min-height: calc(89% - 1.6rem); /*because the margin will affect the 89% height so we subtract the margin0.8rem*/
+  background-color: #fffb;
+
+  margin: 0.8rem auto;
+  border-radius: .6rem;
+
+  /*allow scroll bar to appear*/
+  overflow: auto;
+  overflow: overlay;
+}
+
+/*we need to design our scroll bar*/
+.table_body::-webkit-scrollbar{
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.table_body::-webkit-scrollbar-thumb{
+  border-radius: .5rem;
+  background-color: #0004;
+
+  visibility: hidden;
+}
+.table_body:hover::-webkit-scrollbar-thumb{
+  visibility: visible;
+}
+
+table{
+  width: 100%;
+}
+
+td img{
+  width: 36px;
+  height: 36px;
+  margin-right: 0.5rem;
+  border-radius: 50px;
+
+  vertical-align: middle; /*keeps image and text alignment */
+}
+/*we give proper spacing in the table*/
+table, th, td {
+  border-collapse: collapse;/*to hide the border given by browsee*/
+  padding: 1rem;
+  text-align: left;
+}
+
+/*here is where we get the left scrolling effect*/
+thead th{
+  position: sticky;
+  top: 0;
+  left: 0;
+/*inorder to hide the overlap that appears when we scroll*/
+background-color: #d5d1de;
+cursor: pointer;
+text-transform: capitalize;
+
+}
+
+/*to give the strips for different rows bgc*/
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+/*WHEN SEARCH...*/
+tbody tr.hide{
+  opacity: 0;
+  transform: translateX(100%);
+}
+/*Animation for when we search the table*/
+tbody tr{
+  --delay: .1s;
+  transition: .5s ease-in-out var(--delay), background-color 0s;
+}
+/*when you hover the tables row*/
+tbody tr:hover{
+  background-color: #fff6 !important;
+}
+
+/*When something has class hide they will disappear*/
+tbody tr td,
+tbody tr td p,
+tbody tr td img{
+  transition: .2s ease-in-out ;
+}
+tbody tr.hide td,
+tbody tr.hide td p{
+  padding: 0;
+  font: 0 /0 sans-serif; /*font size =0, line hight = 0, fonta family = sans-serif*/
+  transition: .2s ease-in-out .5s;
+}
+tbody tr.hide td img{
+  width: 0;
+  height: 0;
+  transition: .2s ease-in-out .5s;
+}
+
+
+/*styling differednt status and color code them*/
+.status{
+  padding: 0.4rem 0.4rem;
+  border-radius: 2rem;
+}
+
+.status.delivered{
+  background-color: #86e49d;
+  color: #006b21;
+}
+.status.cancelled{
+  background-color: #d893a3;
+  color: #b30021;
+}
+.status.pending{
+  background-color: #ebc474;
+}
+.status.shipped{
+  background-color: #6fcaea;
+}
+/*get more space when scrolling the table data*/
+@media(max-width:1000px) {
+  td:not(:first-of-type) {
+    min-width: 12.1rem;
+  }
+}
+
+.icon_arrow{
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  border: 1.4px solid transparent;
+
+  text-align: center;
+  font-size: 1rem;
+
+  margin-left: 0.5rem;
+
+  transition: all .2s ease-in-out;
+
+  /*color: #6c00bd;*/
+}
+thead th.asc span.icon_arrow{
+  transform: rotate(180deg);
+}
+
+thead th:hover .icon_arrow{
+  border: 1.4px solid #6c00bd;
+}
+thead th:hover{
+  color: #6c00bd;
+}
+
+thead th.active .icon_arrow{
+  background-color:  #6c00bd;
+  color: #fff;
+}
+
+thead th.active{
+  color: #6c00bd;
+}
+thead th:active, tbody td.active{
+  color: #6c00bd;
+}
+
+
+

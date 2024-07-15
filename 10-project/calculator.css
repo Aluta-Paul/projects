@@ -1,0 +1,53 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  font-family: sans-serif;
+  margin: 0;
+}
+body{
+  background: linear-gradient(to right,#00aaff,#00ff6c );
+}
+
+.calculator-grid{
+  display: grid;
+  justify-content: center;
+  align-content: center;/*to ensure everything is set well*/
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);/*colums will repeat 4 times with 100px*/
+  grid-template-rows: minmax(120px,auto) repeat(5, 100px);/*the first RAW can grow as much as it wills starting with a minimum of 120px and graw to auto*/
+}
+
+.calculator-grid > button{
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255,0.75);
+}
+.calculator-grid > button:hover{
+  background-color: rgba(255, 255, 255,1);
+}
+.span-two{
+  grid-column: span 2;/*spans over two columns*/
+}
+/*making the output */
+.output{
+  grid-column: 1 /-1;/*spans from colum 1 to -1 ie the last column*/
+  background-color: rgba(0, 0, 0,0.75);
+  /*to align the items easy use FLEX*/
+  display: flex;
+  align-items: flex-end;/*so that it is far right*/
+  justify-content: space-around;/*to ensure elements are as far as possible from each other..same to space-between*/
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;/*allow for us to break our word and wrap to next line*/
+  word-break: break-all;/*to allow to break all words*/
+}
+.output .previous-operant{
+  color: rgba(255, 255, 255,0.75);
+  font-size: 1.5rem;
+}
+.output .current-operant{
+  color: white;
+  font-size: 2.5rem;
+}

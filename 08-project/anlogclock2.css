@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.clock {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock.numbers {
+  position: absolute;
+  inset: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.number {
+  position: absolute;
+  transform-origin: 50% 100%;
+  font-size: 16px;
+
+}

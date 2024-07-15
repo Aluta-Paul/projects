@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width= device-width, initial-scale = 1.0">
+  <title>volume Progress Bar</title>
+  <link rel="stylesheet" href="style.css">
+  <!--we are craeting a volume bar
+  featers: change color when volume is so high-->
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <span id="output"></span>
+      <div class="progress">
+        <span id="meter"></span>
+      </div>
+      <div class="btn btn-add" onclick="plus();">+</div>
+      <div class="btn btn-minus" onclick="minus();">-</div>
+    </div>
+  </div>
+
+  <script>
+let x = 0; 
+let output = document.getElementById("output");
+let meter = document.getElementById("meter");
+output.innerHTML = x
+
+function plus() {
+
+  if(x >= 10){
+    return;
+  }
+  if(x >= 7) {
+    meter.style.backgroundColor = "red"
+    meter.style.filter = " drop-shadow(0 0 1.2px red) drop-shadow(0 0 10px red)"
+  }
+
+  output.innerHTML = ++x ;
+  meter.style.height = x*10 + '%';
+}
+function minus() {
+
+  if(x <= 0){
+    return;
+  }
+  if(x <= 7) {
+    meter.style.backgroundColor = "rgb(44, 250, 2)"
+    meter.style.filter = " drop-shadow(0 0 1.2px rgb(44, 250, 2)) drop-shadow(0 0 15px rgb(44, 250, 2))"
+  }
+
+  output.innerHTML = --x ;
+  meter.style.height = x*10 + '%';
+}
+
+  </script>
+</body>
+</html>

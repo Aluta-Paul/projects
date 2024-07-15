@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drop and Drag File Uploader</title>
+  <link rel="stylesheet" href="photo-upload.css">
+</head>
+<body>
+
+  <div class="wrapper">
+    <label for="input-file" id="drop-area">
+      <input type="file" accept="image/*" id="input-file" hidden>
+      <!--BELOW is containerto display the image-->
+      <div id="image-view">
+        <img src="football icon_1.webp">
+        <p>Drag and drop or click here <br> upload image</p>
+        <span>Upload any images from desktop</span>
+      </div>
+    </label>
+  </div>
+  <!--inorder to dynamically cahnge the image that one picks from their device-->
+  <script src="photo-script.js"></script>
+</body>
+</html>

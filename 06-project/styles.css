@@ -1,0 +1,203 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #43affc;
+}
+.container{
+  width: 430px;
+  height: 580px;
+  position: relative;
+}
+.container .form-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+}
+.container .sign-up{
+  /*make it tilt*/
+  transform: translateX(0) rotate(7deg);
+}
+.form-container form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 100%;
+}
+form h2{
+  font-size: 35px;
+  text-align: center;
+  text-transform: capitalize;
+  color: black;
+}
+
+form .form-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  width: 80%;
+  height: 50px;
+  margin: 15px 0;
+}
+.form-group input{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 5px;
+  padding: 0 20px;
+  font-size: 17px;
+  font-weight: 500;
+  outline: none;
+  border: 1px solid black;
+}
+.form-group label{
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  background-color: white;
+  translate: all 0.3s ease;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 3px;
+  color: #999;
+}
+.form-group input:focus~label,
+.form-groupinput:valid~label{
+  color: black;
+  top: 0%;
+  transform: translateY(-50%) scale(0.85);
+}
+form .forgot-password{
+  width: 80%;
+  margin-top: 10px;
+}
+form .forgot-password a{
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+  text-transform: capitalize;
+  translate: all 0.5s ease;
+}
+form .forgot-password a:hover{
+  color: blue;
+  text-decoration: underline;
+}
+form button{
+  background-color: #43affc;
+  color: white;
+  text-transform: capitalize;
+  width: 80%;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+form button{
+  transform: scale(0.95);
+}
+form .links{
+  text-align: center;
+  font-size: 17px;
+  color: black;
+  margin: 30px 0;
+}
+form .links a{
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: 500;
+}
+form .links a label{
+  color: black;
+  transition: all 0.3s ease;
+}
+form .links a label:hover{
+  color: #43affc;
+  cursor: pointer;
+}
+
+#slider-one ~ .container .sign-in{
+  animation: signup-flip 1s ease-in-out forwards;
+}
+#slider-one:checked ~.container .sign-up{
+  animation: rotatecard-sign-up 0.7s ease-in-out forwards;
+}
+#slider-two:checked ~ .container .sign-up{
+  animation: signin-flip 1s ease-in-out forwards;
+}
+#slider-two:checked ~ .container .sign-in{
+  animation: rotatecard-sign-in 0.7s ease-in-out forwards;
+}
+
+#slider-one,#slider-two {
+  display: none;
+}
+@keyframes signup-flip{
+  0%{
+    transform: translateX(0);
+    z-index: 1;
+  }
+  50%{
+    transform: translateX(600px) scale(1.1);
+  }
+  100%{
+    transform: translateX(0) rotate(7deg) scale(1);
+  }
+}
+
+@keyframes signin-flip{
+  0%{
+    transform: translateX(0);
+    z-index: 1;
+  }
+  50%{
+    /*the -ve to ensure it flips in the opp side*/
+    transform: translateX(-600px) scale(1.1);
+  }
+  100%{
+    transform: translateX(0) rotate(7deg) scale(1);
+  }
+}
+
+@keyframes rotatecard-sign-up{
+  0%{
+    transform: rotate(7deg);
+  }
+  100%{
+    transform: rotate(0);
+    z-index: 1;
+  }
+}
+@keyframes rotatecard-sign-in{
+  0%{
+    transform: rotate(7deg);
+  }
+  100%{
+    transform: rotate(0);
+    z-index: 1;
+  }
+}

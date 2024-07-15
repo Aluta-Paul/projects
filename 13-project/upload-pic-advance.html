@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uploading Picutures</title>
+  <link rel="stylesheet" href="upload-pic.css">
+</head>
+<body>
+  <main class="app">
+
+    <div class="header">
+      <h2>Upload your photo</h2>
+      <div class="server-message"></div>
+    </div>
+
+    <div class="input-div">
+      <p>Drag & drop or <span class="browse">browse</span></p>
+      <input type="file" class="file" multiple="multiple" accept="image/png, image/jpg, image/jpeg"> <!--multiple -> allows us to upload multiple images accept ->what type of files we are willing to accept-->
+    </div>
+
+    <!--to contain saved image from server so that user can delete this-->
+    <form id="saved-form">
+      <div class="header">
+        <h3>Saved in server</h3>
+        <button type="submit">delete</button>
+      </div>
+      <div class="saved-div"></div>
+    </form>
+
+    <!--here is where user will upload to server their images-->
+    <form id="queued-form">
+      <div class="header">
+        <h3>Queued In Frontend</h3>
+        <button type="submit">Upload</button>
+      </div>
+      <div class="queued-div"></div><!--display for the images the user is trying to upload-->
+    </form>
+
+
+  </main>
+<!--we do not link the JAVASCRIPT FILE outside because it will not be able to process the images coming from the server-->
+<script>
+
+    let QueuedImagesArray = [], //to hold all the images user will try to upload//
+    savedForm = document.querySelector("#saved-form"),
+    queuedForm = document.querySelector("#queued-form"),
+    savedDiv =document.querySelector(".saved-div"),
+    queuedDiv =document.querySelector(".queued-div"),
+    inputDiv =document.querySelector(".input-div"),
+    input =document.querySelector(".input-div input"),
+    serverMessage = document.querySelector(".server-message"),
+    deleteImages = []; //array that holds all images that user wants to delete
+
+  //saved in server images
+
+
+  //Queued in frontend images
+  input.addEventListener("change",() => {
+    const files = input.files
+    for(let i = 0; i < files.length;i++){
+      QueuedImagesArray.push(files[i])
+    }
+    queuedForm.reset()
+    displayQueuedImages()
+  })
+
+  inputDiv.addEventListener("drop", (e) => {                                          //e =event
+    e.preventDefault() //cause default is to open anew page for the droped image
+    const files = e.dataTransfer.files
+    for(let i = 0; i < files.length;i++){
+      //cause unlike INPUT at drag and drop we cannot know if it was an image so we use if statement to check if type is image else we continue ... ie not add it into our queuedImagesArray.
+      if(!files[i].type.match("image")) continue
+
+      //we intend to check that the image being uploaded does not already exist.
+      if(QueuedImagesArray.every(image => image.name !== files[i].name))
+      QueuedImagesArray.push(files[i])
+    }
+    displayQueuedImages()
+  })
+  
+  function displayQueuedImages() {
+    let images = ""
+    QueuedImagesArray.forEach((image,index) => {
+      images += `<div class="image">
+                <img src="${URL.createObjectURL(image)}" alt="my picture">
+                <span onclick="deleteQueuedImage(${index})">&times;</span>
+                </div>`
+    })
+    queuedDiv.innerHTML = images
+  }
+
+  function deleteQueuedImage(index) {
+    QueuedImagesArray.splice(index,1)
+    displayQueuedImages()
+  }
+
+  //adding eventlistener inorder to send things to SERVER
+
+  queuedForm.addEventListener("submit", (e) => {
+    e.preventDefault() //to prevent from just sending before checkin for some crieterio
+    sendQueuedImagesToServer()
+  })
+
+  function sendQueuedImagesToServer(){
+    const formData = new FormData(queuedForm)
+
+    QueuedImagesArray.forEach((image,index) => {
+      formData.append(`file[${index}]`,image)
+    })
+
+    fetch("upload", {
+      method: "POST",
+      body : formData
+    })
+    //using promises to catch a report
+    //also if there is an error we want to catch it here.
+    .then(response => {
+      if(response.status !== 200) throw Error(response.statusText)
+      location.reload
+    })
+
+    .catch(error => {
+      serverMessage.innerHTML = error
+      serverMessage.style.cssText =  "background-color: #f8d7da ; color: #b71c1c "
+    })
+
+
+  }
+
+
+
+</script>
+
+</body>
+</html>

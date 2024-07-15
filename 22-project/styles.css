@@ -1,0 +1,99 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  --sb-width: 5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  background-color: #fff;
+}
+body.sb-expanded{
+  --sb-width: 12.5rem;
+}
+h1{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+p{
+  margin-bottom: 1.5rem;
+}
+/*Side bar will be fixed covering entire window*/
+aside{
+  position: fixed;
+  /*top: 0;
+  left: 0;
+  bottom: 0;*/
+  inset: 0 auto 0 0;/*use shorthand instead:top+right+bottom+left */
+  padding: 1rem;
+  width: var(--sb-width);
+  background:linear-gradient(rgb(122, 45, 45),pink,purple);
+  transition: width 0.5s ease-in-out;
+}
+/*to allow the nav to take full position*/
+nav{
+  height: 100%;
+  border: 1px solid black;
+}
+nav ul{
+  list-style: none;
+  height: 100%;/*also needed to set last child bottom of page*/
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+}
+nav li:last-child{/*setting last child at the bottom*/
+  margin-top: auto;
+}
+nav a{
+  display: flex;/*so that the icon and span may be arranged well*/
+  align-items: center;
+  gap: 0.626rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+}
+/*some Decorations*/
+nav a.active,
+nav a:hover,
+nav a:focus-visible{
+  outline: none;
+  color:#b366fc;
+  background-color: white;
+}
+/*when side bar is expanded we make it visible*/
+.sb-expanded nav a span{
+  opacity: 1;
+  visibility: visible;
+}
+/*Rotate the arrow */
+.sb-expanded aside .bx-chevrons-right{
+  rotate: 180deg;
+}
+
+nav a span{
+  font-size: 0.875rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    opacity 0.3s ease-in-out,
+    visibility;
+}
+
+main{/*default for small screens. margin= size of collaps sidebar*/
+  margin-left:  5rem;
+  padding: 1rem 2rem;
+  transition: margin-left 0.5s ease-in-out;
+}
+
+@media (min-width:768px){/*if screen>768px then margin dynamically adjust based on margin set earlier*/
+  main {
+    margin-left: var(--sb-width);
+  }
+}
+/*TODO: MOSAIC CSS GRID*/
